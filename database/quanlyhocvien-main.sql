@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `courses` (
-  `course_ID` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
   `course_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `courses_code` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL,
   `date_start` date NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `courses` (
 -- Đang đổ dữ liệu cho bảng `courses`
 --
 
-INSERT INTO `courses` (`course_ID`, `course_name`, `courses_code`, `date_start`, `date_end`) VALUES
+INSERT INTO `courses` (`course_id`, `course_name`, `courses_code`, `date_start`, `date_end`) VALUES
 (1, 'Human Computer Interaction', 'HCI', '2018-09-15', '2018-12-20'),
 (2, 'Artificial Intelligent', 'AI', '2018-09-15', '2018-12-20'),
 (3, 'System Analysis Design', 'SAD', '2018-09-15', '2018-12-20');
@@ -52,7 +52,7 @@ INSERT INTO `courses` (`course_ID`, `course_name`, `courses_code`, `date_start`,
 --
 
 CREATE TABLE `school`(
-  `school_ID` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
   `school_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
@@ -60,7 +60,7 @@ CREATE TABLE `school`(
 -- Đang đổ dữ liệu cho bảng `school`
 --
 
-INSERT INTO `school` (`school_ID`, `school_name`) VALUES
+INSERT INTO `school` (`school_id`, `school_name`) VALUES
 (1, 'Đại học Xây dựng'),
 (2, 'Đại học Hà Nội'),
 (3, 'Đại học Quốc Gia Hà Nội'),
@@ -78,7 +78,7 @@ INSERT INTO `school` (`school_ID`, `school_name`) VALUES
 
 CREATE TABLE `student` (
   `st_id` int(11) NOT NULL,
-  `school_ID` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
   `st_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `st_date` date DEFAULT NULL,
   `st_gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE `student` (
 -- Đang đổ dữ liệu cho bảng `student`
 --
 
-INSERT INTO `student` (`st_id`, `school_ID`, `st_name`, `st_date`, `st_gender`, `st_phone`, `st_email`, `st_skype`, `st_address`) VALUES
+INSERT INTO `student` (`st_id`, `school_id`, `st_name`, `st_date`, `st_gender`, `st_phone`, `st_email`, `st_skype`, `st_address`) VALUES
 (1, 1, 'Bùi Thị Hao', '1996-08-28', 'Nữ', 942015791, 'haobt966@gmail.com', 'haobui.skype', 'Bắc Ninh'),
 (2, 2, 'Bùi Quang Tú', '1989-01-01', 'Nam', 989841944, 'quangtu@gmail.com', 'tu.quang', 'Bắc Ninh'),
 (3, 3, 'Lương Thái Dương', '1997-06-06', 'Nữ', 162596254, 'luongthaiduong@gmail.com', 'duong.luong', 'Hải Dương'),
@@ -107,7 +107,7 @@ INSERT INTO `student` (`st_id`, `school_ID`, `st_name`, `st_date`, `st_gender`, 
 
 CREATE TABLE `subject` (
   `subject_id` int(11) NOT NULL,
-  `course_ID` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
   `tutor_id` int(11) NOT NULL,
   `subject_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `subject_content` varchar(255) COLLATE utf8_vietnamese_ci NOT NULL
@@ -117,7 +117,7 @@ CREATE TABLE `subject` (
 -- Đang đổ dữ liệu cho bảng `subject`
 --
 
-INSERT INTO `subject` (`subject_id`, `course_ID`, `tutor_id`, `subject_name`, `subject_content`) VALUES
+INSERT INTO `subject` (`subject_id`, `course_id`, `tutor_id`, `subject_name`, `subject_content`) VALUES
 (1, 1, 1, 'HCI', 'Human Computer Interaction'),
 (2, 2, 2, 'PPL', 'Principle of Programming Language'),
 (3, 3, 3, 'IST', 'Information System'),
@@ -156,18 +156,18 @@ INSERT INTO `tutor` (`tutor_id`, `tutor_name`, `tutor_phone`, `tutor_email`, `tu
 -- Chỉ mục cho bảng `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`course_ID`);
+  ADD PRIMARY KEY (`course_id`);
 --
 -- Chỉ mục cho bảng `school`
 --
 ALTER TABLE `school`
-  ADD PRIMARY KEY (`school_ID`);
+  ADD PRIMARY KEY (`school_id`);
 --
 -- Chỉ mục cho bảng `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`st_id`),
-  ADD KEY `F1` (`school_ID`);
+  ADD KEY `F1` (`school_id`);
 
 --
 -- Chỉ mục cho bảng `subject`
@@ -175,7 +175,7 @@ ALTER TABLE `student`
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`subject_id`),
   ADD KEY `F2` (`tutor_id`),
-  ADD KEY `F3` (`course_ID`);
+  ADD KEY `F3` (`course_id`);
 
 --
 -- Chỉ mục cho bảng `tutor`
@@ -191,12 +191,12 @@ ALTER TABLE `tutor`
 -- AUTO_INCREMENT cho bảng `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `course_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT cho bảng `school`
 --
 ALTER TABLE `school`
-  MODIFY `school_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `student`
@@ -224,13 +224,13 @@ ALTER TABLE `tutor`
 -- Các ràng buộc cho bảng `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `F1` FOREIGN KEY (`school_ID`) REFERENCES `school` (`school_ID`);
+  ADD CONSTRAINT `F1` FOREIGN KEY (`school_id`) REFERENCES `school` (`school_id`);
 --
 -- Các ràng buộc cho bảng `subject`
 --
 ALTER TABLE `subject`
   ADD CONSTRAINT `F2` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`tutor_id`),
-  ADD CONSTRAINT `F3` FOREIGN KEY (`course_ID`) REFERENCES `courses` (`course_ID`);
+  ADD CONSTRAINT `F3` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
