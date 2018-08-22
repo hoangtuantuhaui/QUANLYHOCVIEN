@@ -21,8 +21,9 @@
 		$id = $conn->insert_id;
 	}
 	// thêm dữ liệu
-	$qr = $conn->query("INSERT INTO hocvien(hv_id,hv_name,hv_date,hv_gender,hv_phone,hv_email,hv_skype,hv_address, t_id) 
-		VALUES ('$mssv','$name','$date','$gender','$phone','$email','$skype','$address', '$id')");	
+	$qr = $conn->query("UPDATE hocvien SET hv_name = '$name', hv_date = '$date',hv_gender = '$gender',hv_phone = '$phone',hv_email = '$email',hv_skype = '$skype',hv_address = '$address', t_id = '$id' WHERE hv_id = '$hv_id'");	
+	var_dump($qr);
+
 	if ($qr) {
-		header("location: qlhocvien.php");	
+		header("location: hv_list.php");	
 	} 

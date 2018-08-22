@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin - Hảo Bùi</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,6 +27,7 @@
     <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 </head>
 
+
 <body>
 
     <div id="wrapper">
@@ -40,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+                <a class="navbar-brand" href="index.html">Admin Area - Hảo Bùi</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -80,40 +81,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="hv_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="hv_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="hv_list.php">Danh sách học viên</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List Product</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add Product</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add User</a>
+                                    <a href="hv_add.php">Thêm học viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -130,41 +107,50 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>List</small>
+                        <h1 class="page-header">Học Viên
+                            <small>Add</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                            <tr align="center">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Category Parent</th>
-                                <th>Status</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
-                                <td>None</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-lg-7" style="padding-bottom:120px">
+                        <form action="xl_addhocvien.php" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Họ và tên :</label>
+                                <input type="text" class="form-control" name="hv_name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ngày sinh :</label>
+                                <input type="date" class="form-control" name="hv_date" placeholder="Birthday">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Giới tính :</label>
+                                <input type="text" class="form-control" name="hv_gender" placeholder="Gender">
+                            </div>                                
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Số điện thoại :</label>
+                                <input type="text" class="form-control" name="hv_phone" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email :</label>
+                                <input type="text" class="form-control" name="hv_email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Skype :</label>
+                                <input type="text" class="form-control" name="hv_skype" placeholder="Skype">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Địa chỉ :</label>
+                                <input type="text" class="form-control" name="hv_address" placeholder="Address">  
+                            </div>                                          
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Trường :</label>
+                                <input type="text" class="form-control" name="t_id" placeholder="School name">
+                            </div>
+                            <div class="form-group button-add">
+                                <button type="submit" class="btn btn-add btn-primary">Thêm</button>
+                            </div>          
+                        </form>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div>

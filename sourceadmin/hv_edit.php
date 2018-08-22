@@ -1,3 +1,10 @@
+<?php 
+
+    include "connect.php";
+    $hv_id = $_GET['hv_id'];
+    $qr = $conn->query("select hocvien.hv_id, hocvien.hv_name, hocvien.hv_date, hocvien.hv_gender, hocvien.hv_phone, hocvien.hv_email, hocvien.hv_skype, hocvien.hv_address, truong.t_name from hocvien inner join truong WHERE (hocvien.t_id = truong.t_id) and (hv_id ='$hv_id')");
+    $rs = mysqli_fetch_array($qr);
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,16 +87,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="hv_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="hv_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="hv_list.php">Danh sách học viên</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="hv_add.php">Thêm học viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -106,53 +113,52 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Học Viên
                             <small>Edit</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="xl-updatehocvien.php" method="post">
-                            <table>
-                                <tr>
-                                    <td><input type="hidden" name="hv_id" value="<?= $rs['hv_id']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Họ và tên :</td>
-                                    <td><input type="text" name="hv_name" value="<?= $rs['hv_name']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Ngày sinh :</td>
-                                    <td><input type="text" name="hv_date" value="<?= $rs['hv_date']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Giới tính :</td>
-                                    <td><input type="text" name="hv_gender" value="<?= $rs['hv_gender']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Số điện thoại :</td>
-                                    <td><input type="text" name="hv_phone" value="<?= $rs['hv_phone']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Email :</td>
-                                    <td><input type="text" name="hv_email" value="<?= $rs['hv_email']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Skype :</td>
-                                    <td><input type="text" name="hv_skype" value="<?= $rs['hv_skype']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Địa chỉ :</td>
-                                    <td><input type="text" name="hv_address" value="<?= $rs['hv_address']; ?>"></td>
-                                </tr>
-                                <tr>
-                                    <td>Trường :</td>
-                                    <td><input type="text" name="t_id" value="<?= $rs['t_name']; ?>"></td>
-                                </tr>
-                            </table>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
-                        <form>
+                        <form action="xl_edithocvien.php" method="post">
+                            <div class="form-group">
+                                <input type="hidden" name="hv_id" value="<?= $rs['hv_id']; ?>"></td>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Họ và tên :</label>
+                                <input type="text" class="form-control" name="hv_name" value="<?= $rs['hv_name']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ngày sinh :</label>
+                                <input type="date" class="form-control" name="hv_date" value="<?= $rs['hv_date']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Giới tính :</label>
+                                <input type="text" class="form-control" name="hv_gender" value="<?= $rs['hv_gender']; ?>">
+                            </div>                                
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Số điện thoại :</label>
+                                <input type="text" class="form-control" name="hv_phone" value="<?= $rs['hv_phone']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email :</label>
+                                <input type="text" class="form-control" name="hv_email" value="<?= $rs['hv_email']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Skype :</label>
+                                <input type="text" class="form-control" name="hv_skype" value="<?= $rs['hv_skype']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Địa chỉ :</label>
+                                <input type="text" class="form-control" name="hv_address" value="<?= $rs['hv_address']; ?>">  
+                            </div>                                          
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Trường :</label>
+                                <input type="text" class="form-control" name="t_id" value="<?= $rs['t_name']; ?>">
+                            </div>
+                            <div class="form-group button-add">
+                                <button type="submit" class="btn btn-add btn-primary"> Cập nhật</button>
+                            </div>          
+                        </form>
                     </div>
                 </div>
                 <!-- /.row -->
