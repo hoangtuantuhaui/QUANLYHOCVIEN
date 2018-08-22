@@ -51,7 +51,7 @@ INSERT INTO `courses` (`course_ID`, `course_name`, `courses_code`, `date_start`,
 -- Cấu trúc bảng cho bảng `school`
 --
 
-CREATE TABLE `school` (
+CREATE TABLE `school`(
   `school_ID` int(11) NOT NULL,
   `school_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
@@ -157,13 +157,11 @@ INSERT INTO `tutor` (`tutor_id`, `tutor_name`, `tutor_phone`, `tutor_email`, `tu
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`course_ID`);
-
 --
 -- Chỉ mục cho bảng `school`
 --
 ALTER TABLE `school`
   ADD PRIMARY KEY (`school_ID`);
-
 --
 -- Chỉ mục cho bảng `student`
 --
@@ -194,7 +192,6 @@ ALTER TABLE `tutor`
 --
 ALTER TABLE `courses`
   MODIFY `course_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT cho bảng `school`
 --
@@ -228,14 +225,12 @@ ALTER TABLE `tutor`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `F1` FOREIGN KEY (`school_ID`) REFERENCES `school` (`school_ID`);
-
 --
 -- Các ràng buộc cho bảng `subject`
 --
 ALTER TABLE `subject`
   ADD CONSTRAINT `F2` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`tutor_id`),
   ADD CONSTRAINT `F3` FOREIGN KEY (`course_ID`) REFERENCES `courses` (`course_ID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
