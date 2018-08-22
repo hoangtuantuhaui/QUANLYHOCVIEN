@@ -1,5 +1,5 @@
 <?php 
-	$dbc=mysqli_connect('localhost','root','','qlhv');
+	$dbc=mysqli_connect('localhost','root','','quanlyhocvien');
 	if (!$dbc) {
 			echo 'Ket noi khong thanh cong';		
 	}
