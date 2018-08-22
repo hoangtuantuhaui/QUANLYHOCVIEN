@@ -1,9 +1,5 @@
 <?php 
-
     include "connect.php";
-    $hv_id = $_GET['hv_id'];
-    $qr = $conn->query("select hocvien.hv_id, hocvien.hv_name, hocvien.hv_date, hocvien.hv_gender, hocvien.hv_phone, hocvien.hv_email, hocvien.hv_skype, hocvien.hv_address, truong.t_name from hocvien inner join truong WHERE (hocvien.t_id = truong.t_id) and (hv_id ='$hv_id')");
-    $rs = mysqli_fetch_array($qr);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin - Hảo Bùi</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +29,17 @@
     <!-- DataTables Responsive CSS -->
     <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 </head>
+<style>
+    table{
+        text-align: center;
+    }
+    th{
+        background-color: #f5f5f5;
+    }
+    table.dataTable thead .sorting {
+    background: unset!important;
+}
+</style>
 
 <body>
 
@@ -47,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+                <a class="navbar-brand" href="st_list.php">Admin Area - Hảo Bùi</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -87,16 +94,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="hv_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
+                            <a href="st_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
                         </li>
                         <li>
-                            <a href="hv_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên <span class="fa arrow"></span></a>
+                            <a href="st_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="hv_list.php">Danh sách học viên</a>
+                                    <a href="st_list.php">Danh sách học viên</a>
                                 </li>
                                 <li>
-                                    <a href="hv_add.php">Thêm học viên</a>
+                                    <a href="st_add.php">Thêm học viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -114,52 +121,50 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Học Viên
-                            <small>Edit</small>
+                            <small>List</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="xl_edithocvien.php" method="post">
-                            <div class="form-group">
-                                <input type="hidden" name="hv_id" value="<?= $rs['hv_id']; ?>"></td>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Họ và tên :</label>
-                                <input type="text" class="form-control" name="hv_name" value="<?= $rs['hv_name']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Ngày sinh :</label>
-                                <input type="date" class="form-control" name="hv_date" value="<?= $rs['hv_date']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Giới tính :</label>
-                                <input type="text" class="form-control" name="hv_gender" value="<?= $rs['hv_gender']; ?>">
-                            </div>                                
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Số điện thoại :</label>
-                                <input type="text" class="form-control" name="hv_phone" value="<?= $rs['hv_phone']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Email :</label>
-                                <input type="text" class="form-control" name="hv_email" value="<?= $rs['hv_email']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Skype :</label>
-                                <input type="text" class="form-control" name="hv_skype" value="<?= $rs['hv_skype']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Địa chỉ :</label>
-                                <input type="text" class="form-control" name="hv_address" value="<?= $rs['hv_address']; ?>">  
-                            </div>                                          
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Trường :</label>
-                                <input type="text" class="form-control" name="t_id" value="<?= $rs['t_name']; ?>">
-                            </div>
-                            <div class="form-group button-add">
-                                <button type="submit" class="btn btn-add btn-primary"> Cập nhật</button>
-                            </div>          
-                        </form>
-                    </div>
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th class="stt">STT</th>
+                                <!-- <th>MSst</th> -->
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Gender</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Skype</th>
+                                <th>Address</th>
+                                <th>School</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                $i =1;
+                                while ($rs=mysqli_fetch_array($qr)) {
+                                    echo "<tr>";
+                                    echo '<td>'.$i.'</td>';
+                                    // echo '<td>'.$rs["st_id"].'</td>';
+                                    echo '<td>'.$rs["st_name"].'</td>';
+                                    echo '<td>'.$rs["st_date"].'</td>';
+                                    echo '<td>'.$rs["st_gender"].'</td>';
+                                    echo '<td>'.$rs["st_phone"].'</td>';
+                                    echo '<td>'.$rs["st_email"].'</td>';
+                                    echo '<td>'.$rs["st_skype"].'</td>';
+                                    echo '<td>'.$rs["st_address"].'</td>';
+                                    echo '<td>'.$rs["school_name"].'</td>';
+                                    echo "<td><i class='fa fa-pencil' aria-hidden='true'></i><a href='st_edit.php?st_id=". $rs["st_id"] ."'> Edit</a></td>";
+                                    echo "<td><i class='fa fa-trash-o' aria-hidden='true'></i><a href='st_delete.php?st_id=". $rs["st_id"] ."'> Delete</a></td>";
+                                    echo '</tr>';
+                                    $i++;
+                                }
+                             ?>                                 
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.row -->
             </div>

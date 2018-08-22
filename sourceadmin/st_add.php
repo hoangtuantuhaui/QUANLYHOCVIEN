@@ -1,6 +1,3 @@
-<?php 
-    include "connect.php";
- ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,17 +26,7 @@
     <!-- DataTables Responsive CSS -->
     <link href="bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 </head>
-<style>
-    table{
-        text-align: center;
-    }
-    th{
-        background-color: #f5f5f5;
-    }
-    table.dataTable thead .sorting {
-    background: unset!important;
-}
-</style>
+
 
 <body>
 
@@ -54,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="hv_list.php">Admin Area - Hảo Bùi</a>
+                <a class="navbar-brand" href="index.html">Admin Area - Hảo Bùi</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -94,16 +81,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="hv_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
+                            <a href="st_list.php"><i class="fa fa-dashboard fa-fw"></i> Danh Mục</a>
                         </li>
                         <li>
-                            <a href="hv_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên <span class="fa arrow"></span></a>
+                            <a href="st_list.php"><i class="fa fa-bar-chart-o fa-fw"></i> Học Viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="hv_list.php">Danh sách học viên</a>
+                                    <a href="st_list.php">Danh sách học viên</a>
                                 </li>
                                 <li>
-                                    <a href="hv_add.php">Thêm học viên</a>
+                                    <a href="st_add.php">Thêm học viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -121,50 +108,49 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Học Viên
-                            <small>List</small>
+                            <small>Add</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                            <tr>
-                                <th class="stt">STT</th>
-                                <!-- <th>MSHV</th> -->
-                                <th>Name</th>
-                                <th>Date</th>
-                                <th>Gender</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Skype</th>
-                                <th>Address</th>
-                                <th>School</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                                $i =1;
-                                while ($rs=mysqli_fetch_array($qr)) {
-                                    echo "<tr>";
-                                    echo '<td>'.$i.'</td>';
-                                    // echo '<td>'.$rs["hv_id"].'</td>';
-                                    echo '<td>'.$rs["hv_name"].'</td>';
-                                    echo '<td>'.$rs["hv_date"].'</td>';
-                                    echo '<td>'.$rs["hv_gender"].'</td>';
-                                    echo '<td>'.$rs["hv_phone"].'</td>';
-                                    echo '<td>'.$rs["hv_email"].'</td>';
-                                    echo '<td>'.$rs["hv_skype"].'</td>';
-                                    echo '<td>'.$rs["hv_address"].'</td>';
-                                    echo '<td>'.$rs["t_name"].'</td>';
-                                    echo "<td><i class='fa fa-pencil' aria-hidden='true'></i><a href='hv_edit.php?hv_id=". $rs["hv_id"] ."'> Edit</a></td>";
-                                    echo "<td><i class='fa fa-trash-o' aria-hidden='true'></i><a href='hv_delete.php?hv_id=". $rs["hv_id"] ."'> Delete</a></td>";
-                                    echo '</tr>';
-                                    $i++;
-                                }
-                             ?>                                 
-                        </tbody>
-                    </table>
+                    <div class="col-lg-7" style="padding-bottom:120px">
+                        <form action="xl_addstudent.php" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Họ và tên :</label>
+                                <input type="text" class="form-control" name="st_name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ngày sinh :</label>
+                                <input type="date" class="form-control" name="st_date" placeholder="Birthday">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Giới tính :</label>
+                                <input type="text" class="form-control" name="st_gender" placeholder="Gender">
+                            </div>                                
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Số điện thoại :</label>
+                                <input type="int" class="form-control" name="st_phone" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email :</label>
+                                <input type="email" class="form-control" name="st_email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Skype :</label>
+                                <input type="text" class="form-control" name="st_skype" placeholder="Skype">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Địa chỉ :</label>
+                                <input type="text" class="form-control" name="st_address" placeholder="Address">  
+                            </div>                                          
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Trường :</label>
+                                <input type="text" class="form-control" name="school_ID" placeholder="School name">
+                            </div>
+                            <div class="form-group button-add">
+                                <button type="submit" class="btn btn-add btn-primary">Thêm</button>
+                            </div>          
+                        </form>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div>
