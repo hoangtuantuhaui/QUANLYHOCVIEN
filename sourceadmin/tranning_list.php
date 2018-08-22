@@ -1,12 +1,19 @@
+<?php 
+$dbc=mysqli_connect('localhost','root','','qlhv');
+if (!$dbc) {
+echo 'Ket noi khong thanh cong';    
+}
+else {
+mysqli_set_charset($dbc,'utf8');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
-    <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin - Tuan Tu Hoang</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+                <a class="navbar-brand" href="index.html">Admin Area - Tuan Tu Hoang</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -80,40 +87,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quan Ly Hoc Vien<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="../sourceadmin/tranning_list.php">List </a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List Product</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add Product</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add User</a>
+                                    <a href="../sourceadmin/tranning_add.php">Add </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -130,7 +110,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Quan Ly Hoc Vien
                             <small>List</small>
                         </h1>
                     </div>
@@ -139,66 +119,69 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Category Parent</th>
-                                <th>Status</th>
+                                <th>Ten Khoa Dao Tao</th>
+                                <th>Ma Khoa Dao Tao</th>
+                                <th>Ngay Bat Dau</th>
+                                <th>Ngay Ket Thuc</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
-                                <td>None</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
+                           <?php 
+                           $queryl="SELECT * FROM tranning";
+                           $result=mysqli_query($dbc,$queryl) or die ("Loi truy van:".mysqli_error($dbc));
+                           while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                           ?>
+                           <tr class="odd gradeX" align="center">
+                            <td><?php echo $rows['id']; ?></th>
+                              <td><?php echo $rows['id_instructor']; ?></td>
+                              <td><?php echo $rows['name']; ?></td>
+                              <td><?php echo $rows['makhdt']; ?></td>
+                              <td><?php echo $rows['date_start']; ?></td>
+                              <td><?php echo $rows['date_end']; ?></td>
+                              <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                              <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="../sourceadmin/tranning_edit.php">Edit</a></td>
+                          </tr>
+                          <?php
+                      }
+                      ?>
+                  </tbody>
+              </table>
+          </div>
+          <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+  </div>
+  <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+</div>
+<!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="dist/js/sb-admin-2.js"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
-    <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<!-- DataTables JavaScript -->
+<script src="bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-                responsive: true
+            responsive: true
         });
     });
-    </script>
+</script>
 </body>
 
 </html>

@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
-    <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin - Tuan Tu Hoang</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+                <a class="navbar-brand" href="index.html">Admin Area - Tuan Tu Hoang</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -83,37 +81,13 @@
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quan Ly Hoc Vien<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="../sourceadmin/tranning_list.php">List </a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List Product</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add Product</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add User</a>
+                                    <a href="../sourceadmin/tranning_add.php">Add </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -130,7 +104,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Quan Ly Hoc Vien
                             <small>Add</small>
                         </h1>
                     </div>
@@ -138,38 +112,29 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <label>Category Parent</label>
+                                <label>Instructor</label>
                                 <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
+                                    <option value="0">Please Choose instructor</option>
+                                    <option value="">Tu</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Tranning name</label>
+                                <input class="form-control" name="txtCateName" placeholder="Please Enter Tranning Name" />
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Ma Khoa Dao Tao</label>
+                                <input class="form-control" name="txtOrder" placeholder="Please Enter Tranning Order" />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Ngay Bat Dau</label>
+                                <input type="date" class="form-control" name="txtOrder" placeholder="Please Enter Tranning Keywords" />
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Ngay Ket thuc</label>
+                                <input type="date" class="form-control" name="txtOrder" placeholder="Please Enter Tranning Keywords" />
                             </div>
-                            <div class="form-group">
-                                <label>Category Status</label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-default">Category Add</button>
+                            <button type="submit" class="btn btn-default">Tranning Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

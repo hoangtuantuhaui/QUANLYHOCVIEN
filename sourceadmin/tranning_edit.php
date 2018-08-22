@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
-    <meta name="author" content="">
-    <title>Admin - Khoa Phạm</title>
+    <title>Admin - Tuan Tu Hoang</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Khoa Phạm</a>
+                <a class="navbar-brand" href="index.html">Admin Area - Tuan Tu Hoang</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -80,40 +78,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quan Ly Hoc Vien<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="#">List </a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List Product</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add Product</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">List User</a>
-                                </li>
-                                <li>
-                                    <a href="#">Add User</a>
+                                    <a href="#">Add </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -130,7 +101,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Quan Ly Hoc Vien
                             <small>Edit</small>
                         </h1>
                     </div>
